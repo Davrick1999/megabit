@@ -1,0 +1,52 @@
+@import "../../colors";
+
+.NavbarItems {
+  background-color: $bgColor;
+  height: 40px;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  top: 100px;
+}
+
+.navbar-logo {
+  justify-self: start;
+  margin-left: 0px;
+  margin-right: 50px;
+  cursor: pointer;
+}
+
+.nav-menu {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  list-style: none;
+  text-align: center;
+  justify-content: end;
+}
+
+.nav-links {
+  font-family: Arial;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  color: $secondaryColor;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+
+.nav-links:hover {
+  background-color: $linkHoverColor;
+  border-radius: 4px;
+  transition: all 0.2s ease-out;
+}
+
+@media screen and (max-width: 920px) {
+  .NavbarItems {
+    position: absolute;
+    height: 50px;
+    margin-top: 0px;
+    width: 100vw;
+    top: 0;
+  }
+}

@@ -1,0 +1,98 @@
+.add-form {
+  position: absolute;
+  margin-left: 3.5vw;
+}
+
+.form-control {
+  margin: 20px 0;
+}
+
+.form-control input[type="text"] {
+  height: 50px;
+  padding-left: 20px;
+  font-size: 12px;
+  width: 480px;
+  border-left: 2px solid #4066a5;
+  border-right: 1px solid #e3e3e4;
+  border-top: 1px solid #e3e3e4;
+  border-bottom: 1px solid #e3e3e4;
+  border-radius: 0px;
+}
+
+.form-control input[type="text"]:focus {
+  outline: none;
+  border: 1px solid #4066a5;
+  border-left: 2px solid #4066a5;
+}
+
+.form-control input[type="text"]:hover {
+  -webkit-box-shadow: 0 5px 10px 0 rgba(134, 134, 134, 0.1);
+          box-shadow: 0 5px 10px 0 rgba(134, 134, 134, 0.1);
+}
+
+.form-control input[type="submit"] {
+  margin-left: -70px;
+  height: 50px;
+  width: 70px;
+  background: url("../../assets/logos/ic_arrow.svg") center no-repeat;
+  color: #fff;
+  padding: 0 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.form-control input[type="submit"]:focus {
+  outline: none;
+}
+
+.form-control input[type="submit"]:hover {
+  background: url("../../assets/logos/arrow.svg") center no-repeat;
+}
+
+.error {
+  color: #ff0033;
+  font-size: 13px;
+  margin: 10px auto;
+}
+
+.check-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  font-family: Arial;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  margin: 0 auto;
+  line-height: 20px;
+  color: #6a707b;
+  cursor: pointer;
+}
+
+.check-label input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.label {
+  text-decoration: underline;
+  color: #131821;
+}
+
+@media screen and (max-width: 920px) {
+  .form-control {
+    margin: 0;
+  }
+  .form-control input[type="text"] {
+    width: 78vw;
+  }
+  .add-form {
+    top: 100px;
+    position: absolute;
+  }
+  .check-label {
+    margin-top: 10px;
+    position: relative;
+  }
+}
+/*# sourceMappingURL=InputField.css.map */

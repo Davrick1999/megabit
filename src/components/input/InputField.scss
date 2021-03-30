@@ -1,0 +1,97 @@
+@import "../../colors";
+
+.add-form {
+  position: absolute;
+  margin-left: 3.5vw;
+}
+
+.form-control {
+  margin: 20px 0;
+  input[type="text"] {
+    height: 50px;
+    padding-left: 20px;
+    font-size: 12px;
+    width: 480px;
+    border: {
+      left: 2px solid $highlighColor;
+      right: 1px solid $lineColor;
+      top: 1px solid $lineColor;
+      bottom: 1px solid $lineColor;
+      radius: 0px;
+    }
+    &:focus {
+      outline: none;
+      border: 1px solid $highlighColor;
+      border-left: 2px solid $highlighColor;
+    }
+  }
+
+  input[type="text"]:hover {
+    box-shadow: 0 5px 10px 0 rgba(134, 134, 134, 0.1);
+  }
+  input[type="submit"] {
+    margin-left: -70px;
+    height: 50px;
+    width: 70px;
+    background: url("../../assets/logos/ic_arrow.svg") center no-repeat;
+    color: $bgColor;
+    padding: 0 15px;
+    border: none;
+    cursor: pointer;
+  }
+  input[type="submit"]:focus {
+    outline: none;
+  }
+  input[type="submit"]:hover {
+    background: url("../../assets/logos/arrow.svg") center no-repeat;
+  }
+}
+
+.error {
+  color: $dangerColor;
+  font-size: 13px;
+  margin: 10px auto;
+}
+
+.check-label {
+  display: flex;
+  position: absolute;
+  font: {
+    family: Arial;
+    style: normal;
+    weight: normal;
+    size: 12px;
+  }
+  // top-right-bottom-left
+  margin: 0 auto;
+  line-height: 20px;
+
+  color: $secondaryColor;
+  cursor: pointer;
+
+  input[type="checkbox"] {
+    margin-right: 10px;
+  }
+}
+
+.label {
+  text-decoration: underline;
+  color: $primaryColor;
+}
+
+@media screen and (max-width: 920px) {
+  .form-control {
+    margin: 0;
+    input[type="text"] {
+      width: 78vw;
+    }
+  }
+  .add-form {
+    top: 100px;
+    position: absolute;
+  }
+  .check-label {
+    margin-top: 10px;
+    position: relative;
+  }
+}

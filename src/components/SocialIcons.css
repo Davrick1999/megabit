@@ -1,0 +1,53 @@
+.social-container {
+  display: block;
+  position: absolute;
+  margin: 200px 100px;
+}
+
+a.social {
+  margin: 0 0.5rem;
+}
+
+a.youtube {
+  content: url("../assets/icons/youtube.svg");
+}
+
+a.youtube:hover {
+  content: url("../assets/icons/youtube-hover.svg");
+}
+
+a.facebook {
+  content: url("../assets/icons/facebook.svg");
+}
+
+a.facebook:hover {
+  content: url("../assets/icons/facebook-hover.svg");
+}
+
+a.twitter {
+  content: url("../assets/icons/twitter.svg");
+}
+
+a.twitter:hover {
+  content: url("../assets/icons/twitter-hover.svg");
+}
+
+a.instagram {
+  content: url("../assets/icons/instagram.svg");
+}
+
+a.instagram:hover {
+  content: url("../assets/icons/instagram-hover.svg");
+}
+
+@media screen and (max-width: 920px) {
+  .social-container {
+    position: relative;
+    margin: auto;
+    bottom: -110px;
+  }
+  a.social {
+    margin: 0 0.1rem;
+  }
+}
+/*# sourceMappingURL=SocialIcons.css.map */

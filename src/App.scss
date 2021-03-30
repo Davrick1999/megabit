@@ -1,29 +1,37 @@
+@import "colors";
+
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 .heading {
-  font-family: Georgia;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 22px;
+  font: {
+    family: Georgia;
+    style: normal;
+    weight: normal;
+    size: 22px;
+  }
+
   margin-top: 25vh;
   margin-left: 5vw;
   /* identical to box height, or 137% */
-  color: #131821;
+
+  color: $primaryColor;
 }
 
 .sub-heading {
-  font-family: Arial;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
+  font: {
+    family: Arial;
+    style: normal;
+    weight: normal;
+    size: 12px;
+  }
   margin: 20px 70vw 20px 5vw;
   line-height: 20px;
-  color: #6a707b;
+
+  color: $secondaryColor;
 }
 
 hr {
@@ -33,7 +41,8 @@ hr {
   height: 1px;
   width: 25vw;
   margin: 25vh 70vw 20px 5vw;
-  background-color: #e3e3e4;
+
+  background-color: $lineColor;
 }
 
 @media screen and (max-width: 920px) {
@@ -46,20 +55,19 @@ hr {
     top: 30px;
     margin: 20px;
   }
+
   hr {
     width: 78vw;
     bottom: 50px;
   }
   .container {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     position: absolute;
-    background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f2f5fa));
-    background: linear-gradient(180deg, #ffffff 0%, #f2f5fa 100%);
+
+    background: $bgGradient;
     width: 89vw;
     height: 45vh;
+
     margin: 30vh 5vw;
   }
 }
-/*# sourceMappingURL=App.css.map */
