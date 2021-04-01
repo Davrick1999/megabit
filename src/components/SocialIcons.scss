@@ -2,7 +2,13 @@
   display: block;
   position: absolute;
   margin: 200px 100px;
+
+  &.success {
+    // top-right-bottom-left
+    margin: 40px 100px auto 100px;
+  }
 }
+
 a.social {
   margin: 0 0.5rem;
 }
@@ -39,6 +45,12 @@ a {
     position: relative;
     margin: auto;
     bottom: -110px;
+
+    &.success {
+      position: relative;
+      margin: auto;
+      bottom: -110px;
+    }
   }
   a.social {
     margin: 0 0.1rem;

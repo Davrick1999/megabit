@@ -63,7 +63,8 @@
     size: 12px;
   }
   // top-right-bottom-left
-  margin: 0 auto;
+  margin-top: 15px;
+  margin-left: 20px;
   line-height: 20px;
 
   color: $secondaryColor;
@@ -91,7 +92,17 @@
     position: absolute;
   }
   .check-label {
+    margin: auto;
     margin-top: 10px;
     position: relative;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .form-control {
+    margin: 0 auto;
+    input[type="text"] {
+      width: 330px;
+    }
   }
 }

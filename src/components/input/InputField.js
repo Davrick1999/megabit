@@ -69,8 +69,9 @@ class InputField extends React.Component {
         .then((res) => console.log(res))
         .catch((err) => console.log(err));
 
-      alert("Form submitted");
-    } else {
+      {
+        this.props.handler();
+      }
     }
   }
 

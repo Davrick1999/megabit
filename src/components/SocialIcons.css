@@ -4,6 +4,10 @@
   margin: 200px 100px;
 }
 
+.social-container.success {
+  margin: 40px 100px auto 100px;
+}
+
 a.social {
   margin: 0 0.5rem;
 }
@@ -42,6 +46,11 @@ a.instagram:hover {
 
 @media screen and (max-width: 920px) {
   .social-container {
+    position: relative;
+    margin: auto;
+    bottom: -110px;
+  }
+  .social-container.success {
     position: relative;
     margin: auto;
     bottom: -110px;

@@ -64,7 +64,8 @@
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
-  margin: 0 auto;
+  margin-top: 15px;
+  margin-left: 20px;
   line-height: 20px;
   color: #6a707b;
   cursor: pointer;
@@ -91,8 +92,18 @@
     position: absolute;
   }
   .check-label {
+    margin: auto;
     margin-top: 10px;
     position: relative;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .form-control {
+    margin: 0 auto;
+  }
+  .form-control input[type="text"] {
+    width: 330px;
   }
 }
 /*# sourceMappingURL=InputField.css.map */

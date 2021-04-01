@@ -1,7 +1,7 @@
 import React from "react";
 import "./SocialIcons.css";
 
-function SocialIcons() {
+function SocialIcons({ className }) {
   const socialIcons = [
     {
       title: (
@@ -88,7 +88,7 @@ function SocialIcons() {
 
   return (
     <>
-      <div className="social-container">
+      <div className={className}>
         {socialIcons.map((item) => {
           return <a className={item.className} href={item.url}></a>;
         })}
