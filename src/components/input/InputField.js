@@ -1,124 +1,133 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import "./InputField.css";
 
-class InputField extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      fields: { email: "" },
-      errors: {},
-      checkBoxChecked: false,
-    };
-  }
+function InputField(props) {
+  const [emailAddress, setEmailAddress] = useState("");
+  const [errors, setErrors] = useState({});
+  const [shouldSubmit, setShouldSubmit] = useState(false);
+  const [checkBoxChecked, setCheckBoxChecked] = useState(false);
 
-  handleValidation() {
-    let fields = this.state.fields;
-    let errors = {};
-    let isValid = true;
-    let checkBoxChecked = this.state.checkBoxChecked;
+  const handleValidation = () => {
+    let _email = emailAddress;
+    let _errors = {};
+    let _isValid = true;
+    let _checkBoxChecked = checkBoxChecked;
 
     //Email
-    if (!fields["email"]) {
-      isValid = false;
-      errors["email"] = "Email address is required";
-    } else if (typeof fields["email"] !== "undefined") {
-      let lastAtPos = fields["email"].lastIndexOf("@");
-      let lastDotPos = fields["email"].lastIndexOf(".");
-      let lastThreeChar = fields["email"].slice(fields["email"].length - 3);
+    if (!_email) {
+      _isValid = false;
+      _errors["email"] = "Email address is required";
+    } else if (typeof _email !== "undefined") {
+      let lastAtPos = _email.lastIndexOf("@");
+      let lastDotPos = _email.lastIndexOf(".");
+      let lastThreeChar = _email.slice(_email.length - 3);
 
       // .co
       if (lastThreeChar === ".co") {
-        isValid = false;
-        errors["email"] =
+        _isValid = false;
+        _errors["email"] =
           "We are not accepting subscriptions from Colombia emails";
       } else if (
         !(
           lastAtPos < lastDotPos &&
           lastAtPos > 0 &&
-          fields["email"].indexOf("@@") == -1 &&
+          _email.indexOf("@@") === -1 &&
           lastDotPos > 2 &&
-          fields["email"].length - lastDotPos > 2
+          _email.length - lastDotPos > 2
         )
       ) {
-        isValid = false;
-        errors["email"] = "Please provide a valid e-mail address";
+        _isValid = false;
+        _errors["email"] = "Please provide a valid email address";
       }
       //Terms and Conditions
-      else if (!checkBoxChecked) {
-        isValid = false;
-        errors["checkBox"] = "You must accept the terms and conditions";
+      else if (!_checkBoxChecked) {
+        _isValid = false;
+        _errors["checkBox"] = "You must accept the terms and conditions";
       }
     }
 
-    this.setState({ errors: errors });
-    return isValid;
-  }
+    setErrors(_errors);
+    setShouldSubmit(true);
+    return _isValid;
+  };
 
-  onFormSubmit(e) {
+  const onFormSubmit = (e) => {
     e.preventDefault();
 
-    if (this.handleValidation()) {
-      let formData = new FormData();
-      formData.append("email", this.state.fields["email"]);
+    // To see how the errors are handled from php itself,
+    // remove the condition
 
-      const url = "http://localhost:80/react-php/";
+    if (handleValidation()) {
+      let formData = new FormData();
+      formData.append("email", emailAddress);
+
+      const url = "http://localhost:80/react-php/post.php";
 
       axios
         .post(url, formData)
-        .then((res) => console.log(res))
+        .then((res) => {
+          let errors = {};
+          errors["email"] = res.data;
+          console.log(errors["email"]);
+          if (errors["email"] !== 1) {
+            setErrors(errors);
+            setShouldSubmit(false);
+          } else {
+            props.handler();
+          }
+        })
         .catch((err) => console.log(err));
 
-      {
-        this.props.handler();
+      if (shouldSubmit) {
+        props.handler();
       }
     }
-  }
-
-  handleChange(field, e) {
-    let fields = this.state.fields;
-    fields[field] = e.target.value;
-    this.setState({ fields });
-  }
-
-  handleCheckClick = () => {
-    this.setState({ checkBoxChecked: !this.state.checkBoxChecked });
   };
 
-  render() {
-    return (
-      <>
-        <form className="add-form" onSubmit={this.onFormSubmit.bind(this)}>
-          <div className="form-control">
-            <input
-              refs="email"
-              type="text"
-              placeholder={this.props.placeholder}
-              name="email"
-              onChange={this.handleChange.bind(this, "email")}
-              value={this.state.fields["email"]}
-            />
-            <input type="submit" value="" />
-            <div className="error">{this.state.errors["email"]}</div>
-            <div className="error">{this.state.errors["checkBox"]}</div>
-          </div>
-          <label className="check-label">
-            <input
-              type="checkbox"
-              checked={this.state.checkBoxChecked}
-              onChange={this.handleCheckClick}
-            />
-            <span>
-              I agree to{" "}
-              <a className="label" href="#">
-                terms of service
-              </a>
-            </span>
-          </label>
-        </form>
-      </>
-    );
-  }
+  const handleChange = (e) => {
+    let _email = emailAddress;
+    _email = e.target.value;
+    setEmailAddress(_email);
+  };
+
+  const handleCheckClick = () => {
+    //this.setState({ checkBoxChecked: !this.state.checkBoxChecked });
+    setCheckBoxChecked(!checkBoxChecked);
+  };
+
+  return (
+    <>
+      <form className="add-form" onSubmit={onFormSubmit.bind(this)}>
+        <div className="form-control">
+          <input
+            refs="email"
+            type="text"
+            placeholder={props.placeholder}
+            name="email"
+            onChange={handleChange.bind(this)}
+            value={emailAddress}
+          />
+          <input type="submit" value="" />
+          <div className="error">{errors["email"]}</div>
+          <div className="error">{errors["checkBox"]}</div>
+        </div>
+        <label className="check-label">
+          <input
+            type="checkbox"
+            checked={checkBoxChecked}
+            onChange={handleCheckClick}
+          />
+          <span>
+            I agree to{" "}
+            <a className="label" href="#">
+              terms of service
+            </a>
+          </span>
+        </label>
+      </form>
+    </>
+  );
 }
 
 export default InputField;

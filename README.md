@@ -1,6 +1,9 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+My php code (react-php) is located in /var/www/html/ directory of my Ubuntu machine.
+If you have Ubuntu please place it in the above directory and then run it.
+In the same folder (react-php) I am attachin my database (react-php.sql) file.
+Other instructions are as follows:
 
 ## Available Scripts
 
